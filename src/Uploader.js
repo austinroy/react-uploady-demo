@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useContext } from "react";
 import "./App.css";
 
-import { Circle } from "rc-progress";
-import Uploady, { useItemProgressListener } from "@rpldy/uploady";
-import UploadButton from "@rpldy/upload-button";
+import Uploady, { useItemProgressListener, UploadyContext } from "@rpldy/uploady";
 import { createMockSender } from "@rpldy/sender";
+import { Button, Progress } from "antd";
 
 const UploadProgress = () => {
   const [progress, setProgess] = useState(0);
@@ -16,15 +15,23 @@ const UploadProgress = () => {
 
   return (
     progressData && (
-      <Circle
-        style={{ height: "100px", marginTop: "20px" }}
-        strokeWidth={2}
-        strokeColor={progress === 100 ? "#00a626" : "#2db7f5"}
+      <Progress
+        type="circle"
         percent={progress}
       />
     )
   );
 };
+
+const CustomButton = () => { 
+    const uploady = useContext(UploadyContext);
+
+    const hanldeUpload = useCallback(()=> {
+            uploady.showFileUpload();
+        },[uploady]);
+
+    return <Button onClick={hanldeUpload} type="primary">Custom Upload Button</Button>
+}
 
 export default function Uploader() {
   return (
@@ -33,7 +40,7 @@ export default function Uploader() {
       enhancer={mockEnhancer}
     >
       <div className="Uploader">
-        <UploadButton />
+        <CustomButton />
         <br />
         <UploadProgress />
       </div>

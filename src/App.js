@@ -1,5 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
 import Uploader from './Uploader'
 
 function App() {
