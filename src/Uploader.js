@@ -5,7 +5,7 @@ import Uploady, { useItemProgressListener, UploadyContext } from "@rpldy/uploady
 import { createMockSender } from "@rpldy/sender";
 import { Button, Progress } from "antd";
 
-const UploadProgress = () => {
+const UploadProgressBar = () => {
   const [progress, setProgess] = useState(0);
   const progressData = useItemProgressListener();
 
@@ -33,7 +33,7 @@ const CustomButton = () => {
     return <Button onClick={hanldeUpload} type="primary">Custom Upload Button</Button>
 }
 
-export default function Uploader() {
+ const Uploader = () => {
   return (
     <Uploady
       destination={{ url: "http://mock-server.com" }}
@@ -43,7 +43,7 @@ export default function Uploader() {
         <CustomButton />
         <br />
         <br />
-        <UploadProgress />
+        <UploadProgressBar />
       </div>
     </Uploady>
   );
@@ -54,3 +54,5 @@ const mockEnhancer = uploader => {
   uploader.update({ send: mockSender.send });
   return uploader;
 };
+
+export default Uploader;
