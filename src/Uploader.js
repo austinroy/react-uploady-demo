@@ -5,7 +5,7 @@ import Uploady, { useItemProgressListener, UploadyContext } from "@rpldy/uploady
 import { createMockSender } from "@rpldy/sender";
 import { Button, Progress } from "antd";
 
-const UploadProgressBar = () => {
+const UploadProgress = () => {
   const [progress, setProgess] = useState(0);
   const progressData = useItemProgressListener();
 
@@ -43,7 +43,7 @@ const CustomButton = () => {
         <CustomButton />
         <br />
         <br />
-        <UploadProgressBar />
+        <UploadProgress />
       </div>
     </Uploady>
   );
