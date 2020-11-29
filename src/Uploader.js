@@ -42,6 +42,7 @@ export default function Uploader() {
       <div className="Uploader">
         <CustomButton />
         <br />
+        <br />
         <UploadProgress />
       </div>
     </Uploady>
